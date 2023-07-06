@@ -145,7 +145,7 @@ In addition you have the option to create or not :
 | service\_role\_arn | Existing service role ARN created by ECS cluster module | `any` | n/a | yes |
 | source\_ips | List of source ip to use on listerner rule | `list` | `[]` | no |
 | ssm\_variables | Map of variables and SSM locations to add to the task definition | `map(string)` | `{}` | no |
-| static\_variables | Map of variables and static values to add to the task definition | `map(string)` | `{}` | no |
+| env\_variables | Map of variables and static values to add to the task definition | `map(string)` | `{}` | no |
 | subnets | The subnets associated with the task or service. (REQUIRED IF 'LAUCH\_TYPE' IS FARGATE) | `any` | `null` | no |
 | task\_definition\_arn | Task definition to use for this service (optional) | `string` | `""` | no |
 | task\_role\_arn | Existing task role ARN created by ECS cluster module | `any` | n/a | yes |

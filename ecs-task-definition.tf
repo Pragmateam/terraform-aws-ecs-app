@@ -37,7 +37,7 @@ resource "aws_ecs_task_definition" "default" {
         containerPath = values(var.efs_mapping)[0]
       }]
       secrets     = [for k, v in var.ssm_variables : { name : k, valueFrom : v }]
-      environment = [for k, v in var.static_variables : { name : k, value : v }]
+      environment = [for k, v in var.env_variables : { name : k, value : v }]
       ulimits     = var.ulimits
     }
   ])

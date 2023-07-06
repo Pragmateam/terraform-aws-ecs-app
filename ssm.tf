@@ -1,7 +1,7 @@
 resource "aws_ssm_parameter" "secure_string" {
   for_each    = toset(var.ssm_parameters_secure_strings)
   name        = "/ecs/${var.cluster_name}/${var.name}/${each.key}"
-  description = each.value
+  description = each.key
   type        = "SecureString"
   value       = "PLACEHOLDER"
 

@@ -366,7 +366,7 @@ variable "ssm_variables" {
   default     = {}
 }
 
-variable "static_variables" {
+variable "env_variables" {
   type        = map(string)
   description = "Map of variables and static values to add to the task definition"
   default     = {}
