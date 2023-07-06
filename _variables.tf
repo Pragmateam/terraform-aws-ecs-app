@@ -499,3 +499,15 @@ variable "schedule_cron_stop" {
   default     = ""
   description = "Cron expression to define when to trigger a stop of the auto-scaling group. E.g. 'cron(00 09 ? * MON-FRI *)' to start at 8am UTC time"
 }
+
+variable "ssm_parameters_secure_strings" {
+  type        = any
+  default     = []
+  description = "List of app's secure variables to be created in SSM Parameter Store"
+}
+
+variable "ssm_parameters_strings" {
+  type        = any
+  default     = {}
+  description = "List of objects of app's variables to create in SSM Parameter Store"
+}
