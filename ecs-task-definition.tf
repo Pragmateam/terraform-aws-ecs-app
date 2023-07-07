@@ -12,6 +12,11 @@ resource "aws_ecs_task_definition" "default" {
   cpu          = var.launch_type == "FARGATE" ? var.cpu : null
   memory       = var.launch_type == "FARGATE" ? var.memory : null
 
+  runtime_platform {
+    operating_system_family = var.task_operating_system_family
+    cpu_architecture        = var.task_cpu_architecture
+  }
+
   container_definitions = jsonencode([
     {
       name      = var.name

@@ -130,6 +130,17 @@ variable "task_definition_arn" {
   default     = ""
 }
 
+variable "task_operating_system_family" {
+  default     = "LINUX"
+  description = "Operating system family to use for this task definition. Valid values: LINUX, WINDOWS_SERVER_2019_FULL, WINDOWS_SERVER_2019_CORE, WINDOWS_SERVER_2022_FULL, and WINDOWS_SERVER_2022_CORE."
+}
+
+variable "task_cpu_architecture" {
+  default     = "X86_64"
+  description = "CPU architecture to use for this task definition. Valid values: X86_64, ARM64."
+}
+
+
 variable "vpc_id" {
   description = "VPC ID to deploy this app to"
 }
