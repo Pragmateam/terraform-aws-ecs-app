@@ -7,7 +7,12 @@ resource "aws_ecs_service" "default" {
   health_check_grace_period_seconds  = var.service_health_check_grace_period_seconds
   deployment_maximum_percent         = var.service_deployment_maximum_percent
   deployment_minimum_healthy_percent = var.service_deployment_minimum_healthy_percent
+  force_new_deployment               = true
   enable_execute_command             = true
+
+  triggers = {
+    redeployment = timestamp()
+  }
 
   dynamic "network_configuration" {
     for_each = var.launch_type == "FARGATE" ? [var.subnets] : []
@@ -55,7 +60,7 @@ resource "aws_ecs_service" "default" {
   }
 
   lifecycle {
-    ignore_changes = [ load_balancer, desired_count, capacity_provider_strategy ]
+    ignore_changes = [ load_balancer, task_definition, desired_count, capacity_provider_strategy ]
   }
 
   depends_on = [

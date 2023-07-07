@@ -479,7 +479,7 @@ variable "redirects" {
 }
 
 variable "deployment_controller" {
-  default     = "CODE_DEPLOY"
+  default     = "ECS"
   description = "Type of deployment controller. Valid values: CODE_DEPLOY, ECS, EXTERNAL."
 }
 
