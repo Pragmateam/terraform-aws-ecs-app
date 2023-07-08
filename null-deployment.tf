@@ -1,6 +1,8 @@
 # The primary use-case for the null resource is as a do-nothing container
 # for arbitrary actions taken by a provisioner.
 resource "null_resource" "deployment" {
+  count = var.deployment_controller == "CODE_DEPLOY" ? 1 : 0
+
   depends_on = [aws_codedeploy_app.ecs, aws_ecs_task_definition.default]
 
   # Changes to any instance of the cluster requires re-provisioning
