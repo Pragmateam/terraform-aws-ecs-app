@@ -16,8 +16,4 @@ resource "aws_ssm_parameter" "string" {
   description = each.key
   type        = "String"
   value       = each.value
-
-  lifecycle {
-    ignore_changes = [value]
-  }
 }
