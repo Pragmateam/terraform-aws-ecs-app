@@ -167,6 +167,11 @@ resource "aws_lb_target_group" "green" {
     protocol            = var.protocol
   }
 
+  lifecycle {
+    create_before_destroy = true
+    ignore_changes        = [name]
+  }
+
   dynamic "stickiness" {
     for_each = var.dynamic_stickiness
     iterator = stickiness
@@ -195,6 +200,11 @@ resource "aws_lb_target_group" "blue" {
     timeout             = var.healthcheck_timeout
     matcher             = var.healthcheck_matcher
     protocol            = var.protocol
+  }
+
+  lifecycle {
+    create_before_destroy = true
+    ignore_changes        = [name]
   }
 
   dynamic "stickiness" {
