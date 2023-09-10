@@ -359,6 +359,12 @@ variable "create_iam_codedeployrole" {
   description = "Create Codedeploy IAM Role for ECS or not."
 }
 
+variable "iam_codedeployrolename" {
+  type        = string
+  default     = null
+  description = "Custom name for IAM Code Deploy role, if create_iam_codedeployrole is true"
+}
+
 variable "alarm_prefix" {
   type        = string
   description = "String prefix for cloudwatch alarms. (Optional)"

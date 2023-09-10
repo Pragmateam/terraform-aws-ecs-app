@@ -2,7 +2,7 @@ resource "aws_iam_role" "codedeploy_service" {
 
   count = var.create_iam_codedeployrole == true ? 1 : 0
 
-  name = "codedeploy-service-${var.cluster_name}-${var.name}-${data.aws_region.current.name}"
+  name = var.iam_codedeployrolename != null ? var.iam_codedeployrolename : "codedeploy-service-${var.cluster_name}-${var.name}-${data.aws_region.current.name}"
 
   assume_role_policy = <<EOF
 {
